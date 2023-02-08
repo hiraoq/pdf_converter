@@ -1,0 +1,1 @@
+cp -f ./htdocs/list.html /mnt/c/Apache24/htdocs/ & cp -n ./htdocs/books/*.html /mnt/c/Apache24/htdocs/books/
