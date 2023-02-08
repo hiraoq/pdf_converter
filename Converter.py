@@ -3,12 +3,11 @@ from Utils import Utils
 from HtmlWriter import HtmlWriter
 
 
-ROOT_DIR = Utils.CONVERTED_DIR # './'
-PDF_DIR = Utils.PDF_DIR # f'{ROOT_DIR}pdf/'
-HTML_DIR = Utils.HTML_DIR # f'{ROOT_DIR}htdocs/html/'
-CONVERTED_DIR = Utils.CONVERTED_DIR # f'{ROOT_DIR}converted/'
+ROOT_DIR = Utils.CONVERTED_DIR 
+PDF_DIR = Utils.PDF_DIR 
+HTML_DIR = Utils.HTML_DIR
+CONVERTED_DIR = Utils.CONVERTED_DIR
 DOC_ROOT = Utils.DOC_ROOT
-# LIST_FILE = Utils.LIST_FILE
 
 def main():
     html_base_names = get_html_base_names()
@@ -28,6 +27,8 @@ def main():
             if f'{pdf_base_name}' in get_html_base_names():
                 # 移動先に同名ファイルあれば強制上書き
                 subprocess.run(['mv','-f',pdf_path,CONVERTED_DIR])
+                
+    # list用htmlを更新
     HtmlWriter.update_list(read_file=f"{DOC_ROOT}list.html",write_file=f"./htdocs/list.html")
             
 def get_html_base_names():
