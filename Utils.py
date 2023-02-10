@@ -6,6 +6,8 @@ class Utils:
     PDF_DIR = f'{ROOT_DIR}pdf/'
     CONVERTED_DIR = f'{ROOT_DIR}converted/'
     DOC_ROOT = '/mnt/c/Apache24/htdocs/'
+    IMG_DIR = f'{ROOT_DIR}img/'
+    COVER_IMG_DIR = f'{IMG_DIR}cover/'
     # write用とread用をテンプレートで分ける
     # LIST_FILE_TEMP = hogehoge
     

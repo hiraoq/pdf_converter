@@ -1,6 +1,6 @@
 from Utils import Utils 
 from bs4 import BeautifulSoup
-
+import urllib.parse
 class HtmlWriter:
     
     # list.htmlを更新する
@@ -10,14 +10,14 @@ class HtmlWriter:
         html_basenames = Utils.get_html_base_names()
         for html_basename in html_basenames:
             li = soup.new_tag('li')
-            a = soup.new_tag('a',href=f"./books/{html_basename}.html")
-            a.append(html_basename)
+            # htmlファイル名をパーセントエンコーディングしURLを作成
+            html_url = f"./books/{urllib.parse.quote(html_basename)}.html"
+            a = soup.new_tag('a',href=html_url)
+            a.append(html_url)
             li.append(a)
             soup.ul.append(li)
         with open(write_file, mode='w', encoding='utf-8') as f:
             f.write(soup.prettify())
     
-    update_list(read_file=f"{Utils.DOC_ROOT}list.html",write_file=f"./htdocs/list.html")
-
-    # TODO:呼び出し方は検討
-    # update_list(read_file="Utils.DOC_ROOT/list.html",utils.HTML_DIR)
+    # templateファイルをベースに取得したhtmlリストを書き込み、list.html生成
+    update_list(read_file=f"{Utils.ROOT_DIR}template.html",write_file=f"./htdocs/list.html")
