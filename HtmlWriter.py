@@ -13,7 +13,7 @@ class HtmlWriter:
             # htmlファイル名をパーセントエンコーディングしURLを作成
             html_url = f"./books/{urllib.parse.quote(html_basename)}.html"
             a = soup.new_tag('a',href=html_url)
-            a.append(html_url)
+            a.append(html_basename)
             li.append(a)
             soup.ul.append(li)
         with open(write_file, mode='w', encoding='utf-8') as f:
